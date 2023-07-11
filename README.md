@@ -32,6 +32,3 @@ To run the Sneaker Spot application locally, follow these steps:
 - `js/products.js`: Contains an array of product objects.
 - `js/app.js`: Handles the dynamic rendering of categories, products, and sorting functionality.
 
-## Contributing
-
-Contributions to Sneaker Spot are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
