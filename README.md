@@ -6,8 +6,8 @@ Sneaker Spot is an online store that offers a wide selection of trendy sneakers 
 
 - Categorized Sneakers: Browse sneakers based on categories such as Men, Women, Kids, and Sports Performance.
 - Dynamic Product Display: The product table dynamically updates when you click on a category, showing relevant products.
-- Product Details: Click on a product to view its details in the console including : Name, boolean discontinuity, category, 
-price and description.
+- Product Details: Click on a product to view its details below the table including : Name, boolean discontinuity (if the 
+product is discontinued it won't show) , category, price and description.
 - Sleek Design: Enjoy a visually appealing and user-friendly interface.
 
 ## Technologies Used
