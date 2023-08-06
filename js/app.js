@@ -1,11 +1,15 @@
+
 const { products, categories } = window;
 
 function main() {
+  const productContainer = document.getElementById("products");
   const categoryMenu = document.getElementById("category-menu");
-  const productsTable = document.getElementById("products");
-  const productDetails = document.getElementById("product-description");
+  // const productsTable = document.getElementById("products");
+  // const productDetails = document.getElementById("product-description");
   // ************** SHOW PRODUCT FOR INDIVIDUAL CATEGORY ************ //
   const showCategoryProducts = (categoryId) => {
+    // **************** CLEAR EXISTING CONTENT ******************** //
+    productContainer.innerHTML = "";
     const selectedCategory = categories.find((category) => category.id === categoryId);
     const filteredProducts = products.filter(
       (product) => product.categories.includes(categoryId) && !product.discontinued
@@ -31,48 +35,69 @@ function main() {
     // ***** UPDATE THE SELECTED CATEGORY TITLE ************************ //
     document.getElementById("category").textContent = selectedCategory.description;
 
-    // **************** CLEAR EXISTING ROWS ******************** //
-    productsTable.innerHTML = "";
-
-    // ***************** CREATE AND ADD NEW ROWS FOR THE PRODUCTS **//
     filteredProducts.forEach((product) => {
-      const row = document.createElement("tr");
+      const card = createProductCard(product);
+      console.log(card);
+      productContainer.appendChild(card);
+    });
+    // PRODUCT CARD
+    function createProductCard(product) {
+      const card = document.createElement("div");
+      card.classList.add("container", "card");
 
-      // ********* ONLCLICK SHOW PRODUCT DETAILS ****************** //
-      // row.addEventListener("click", () => {
-      //   console.log(
-      //     `Name: ${product.name}\ndescription: ${product.description}\nprice: $${
-      //       product.price / 100
-      //     }\ndiscontinued: ${product.discontinued}\ncategories: ${categoryName}`
-      //   );
-      // });
-      row.addEventListener("click", () => {
-        productDetails.innerHTML = `<ul> <li>Name: ${product.name}</li> <br/> <li> Description: ${
-          product.description
-        } </li> <br/> <li>Price: $${product.price / 100} </li> <br/> <li> Discontinued: ${
-          product.discontinued
-        } </li> <br/> <li>Category: ${categoryName}</li> </ul>`;
+      const productImage = document.createElement("img");
+      productImage.src = product.imageUrl;
+      productImage.alt = "Product Image";
+      productImage.classList.add("imgBx");
+      card.appendChild(productImage);
+
+      const title = document.createElement("h2");
+      title.textContent = product.name;
+      title.classList.add("contentBx", "h2");
+      card.appendChild(title);
+
+      const sizeContainer = document.createElement("div");
+      sizeContainer.classList.add("size");
+      sizeContainer.innerHTML = `<h5>Size:</h5>${product.sizes
+        .map((size) => `<span>${size}</span>`)
+        .join("")}`;
+      card.appendChild(sizeContainer);
+
+      const colorContainer = document.createElement("div");
+      colorContainer.classList.add("color");
+      colorContainer.innerHTML = `<h5>Color :</h5>${product.colors
+        .map((color) => `<span style="background-color: ${color};"></span>`)
+        .join("")}`;
+      card.appendChild(colorContainer);
+
+      let price = document.createElement("div");
+      price.className = "price";
+      price.textContent = "$" + product.price / 100; // Assuming the price is stored in cents
+      card.appendChild(price);
+
+      const buyNowLink = document.createElement("a");
+      buyNowLink.href = "#";
+      buyNowLink.textContent = "Buy Now";
+      buyNowLink.classList.add("contentBx");
+      card.appendChild(buyNowLink);
+
+      card.addEventListener("click", () => {
+        const productDetails = `
+          <ul>
+            <li>Category: ${categoryName}</li>
+            <li>Name: ${product.name}</li>
+            <li>Description: ${product.description}</li>
+            <li>Price: $${product.price / 100}</li>
+            <li>Discontinued: ${product.discontinued}</li>
+          </ul>
+        `;
+        document.getElementById("product-description").innerHTML = productDetails;
       });
 
-      const titleCell = document.createElement("td");
-      titleCell.textContent = product.name;
-      row.appendChild(titleCell);
-
-      const descriptionCell = document.createElement("td");
-      descriptionCell.textContent = product.description;
-      row.appendChild(descriptionCell);
-
-      const priceCell = document.createElement("td");
-      const formattedPrice = new Intl.NumberFormat("en-CA", {
-        style: "currency",
-        currency: "CAD"
-      }).format(product.price / 100);
-      priceCell.textContent = formattedPrice;
-      row.appendChild(priceCell);
-
-      productsTable.appendChild(row);
-    });
+      return card;
+    }
   };
+
   // ***************** BUTTONS ******************** //
   categories.forEach((category) => {
     const button = document.createElement("a");
@@ -87,6 +112,7 @@ function main() {
 
     categoryMenu.appendChild(button);
   });
+  // *************** DEFAULT CATEGORY SHOW ********************* //
 
   // *************** DEFAULT CATEGORY SHOW ********************* //
   showCategoryProducts("c1");

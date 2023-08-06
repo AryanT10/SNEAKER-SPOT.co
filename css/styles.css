@@ -1,33 +1,173 @@
-/**
- * Override any styles here that you want to change (optional)...
- */
-html,body{
-	padding:20px;
-}
+ @import url("https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,600,700,800, 800i, 900&display=swap");
 
-header{
-	font-family: consolas;
-   border: 4px solid #000000;
+ html,
+ body {
+   padding: 20px;
+ }
+ 
+ header {
+   font-family: consolas;
+   border: 4px solid #bbbebb;
    border-radius: 35px;
-   
-   }
-#category-menu{
-	position:relative;
-	margin-top: 20px;
-	font-size: larger;
-	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	padding:3px;
-	text-align: center;
-}
-
-table {
-	
-	border: 2px solid #000000;
-	border-radius: 25px;
-}
-
-#category{
-	padding-left: 23px;
-	font-style: italic;
-	font-family:monospace;
-}
+ }
+ 
+ #category-menu {
+   position: relative;
+   margin-top: 20px;
+   font-size: larger;
+   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .product-container {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 20px;
+   justify-items: center;
+   align-items: center;
+ }
+ 
+ #category {
+   border: 4px solid #000;
+   padding-left: 23px;
+   font-style: italic;
+   font-family: monospace;
+ }
+ 
+ .container.card {
+   background-color: #d9d9d9;
+   border: 1px solid #eee;
+   box-shadow: 2px 2px 5px #aaa;
+   margin: 10px;
+   padding: 20px;
+   width: 230px;
+   height: 350px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   transition: 0.3s;
+   border: 2px solid #8f8b8b;
+   border-radius: 20px;
+ }
+ 
+ .container.card:hover {
+   transform: scale(1.1);
+   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2);
+ }
+ 
+ h2#category {
+   text-align: center;
+ }
+ 
+ .container.card img {
+   width: auto;
+   height: auto;
+ }
+ 
+ .container.card .imgBx {
+   width: 100%;
+   height: 150px;
+   object-fit: contain;
+ }
+ 
+ .container.card h2 {
+   color: #333;
+   font-size: 15px;
+   text-align: center;
+   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva,
+	 Verdana, sans-serif;
+ }
+ 
+ .container.card .size,
+ .container.card .color {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 14px;
+   width: 100%;
+ }
+ 
+ .container.card .size span,
+ .container.card .color span {
+   border: 1px solid rgb(197, 187, 187);
+   padding: 2px 6px;
+   margin-left: 5px;
+   cursor: pointer;
+ }
+ 
+ .container.card .color span {
+   height: 20px;
+   width: 20px;
+   border-radius: 50%;
+ }
+ 
+ .container.card .contentBx {
+   margin: 5px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   padding: 10px;
+   background: #bdb4bf;
+   color: #fff;
+   text-decoration: none;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   height: auto;
+   overflow: auto;
+ }
+ 
+ .container.card .contentBx:hover {
+   background: #f60062;
+ }
+ 
+ #category-menu .btn-dark {
+   margin: 5px;
+ }
+ 
+ #product-description ul {
+   list-style-type: none;
+   padding: 0;
+ }
+ 
+ #product-description ul li {
+   margin: 5px 0;
+ }
+ 
+ .container .card:before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: #1bbfe9;
+   clip-path: circle(150px at 80% 20%);
+   transition: 0.5s ease-in-out;
+   z-index: -1;
+ }
+ 
+ span {
+   background-color: #bbbebb;
+   border-radius: 6px;
+ }
+ 
+ span:hover {
+   background-color: #ffffff;
+ }
+ 
+ /* h2#category{
+   border-style: dotted;
+   border-radius: 30px;
+   border: 60px;
+ } */
+ 
+ a.btn.btn-dark:hover {
+   transform: translateY(-3px);
+   box-shadow: #6c6c6c;
+   border-style: double;
+ }
+ 
